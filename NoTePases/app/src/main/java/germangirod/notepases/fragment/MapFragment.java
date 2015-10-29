@@ -1,23 +1,22 @@
-package germangirod.notepases;
+package germangirod.notepases.fragment;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import germangirod.notepases.R;
 
 /**
  * Created by germangirod on 10/29/15.
  */
-public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapLoadedCallback {
+public class MapFragment extends MapBaseFragment {
 
     @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map_fragment, container, false);
@@ -40,15 +39,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mapFragment.getMapAsync(this);
     }
 
-    @Override public void onMapLoaded() {
-
-    }
-
     @Override public void onMapLongClick(LatLng latLng) {
 
     }
 
     @Override public void onMapReady(GoogleMap googleMap) {
-
+        this.googleMap = googleMap;
     }
 }

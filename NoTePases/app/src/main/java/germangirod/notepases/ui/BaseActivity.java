@@ -1,29 +1,21 @@
-package germangirod.notepases;
+package germangirod.notepases.ui;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import butterknife.ButterKnife;
+import germangirod.notepases.R;
 
-public class MainActivity extends BaseActivity {
+/**
+ * Created by germangirod on 10/29/15.
+ */
+public abstract class BaseActivity extends AppCompatActivity {
 
-    private android.support.v4.app.FragmentTransaction fragmentTransaction;
-
-    @Override public int getLayoutId() {
-        return R.layout.activity_main;
-    }
+    public abstract int getLayoutId();
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ButterKnife.inject(this);
-        setFragment();
-    }
-
-    private void setFragment() {
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_content, new MapFragment());
-        fragmentTransaction.commit();
+        setContentView(getLayoutId());
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,9 +31,6 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
