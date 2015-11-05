@@ -25,6 +25,8 @@
         <meta-data
                 android:name="com.google.android.maps.v2.API_KEY"
                 android:value="@string/google_maps" />
+
+        <service android:name=".data.alarm_service.GeofenseTransitionsIntentService" />
     </application>
 
 </manifest>

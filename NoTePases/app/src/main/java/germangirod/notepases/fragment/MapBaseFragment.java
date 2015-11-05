@@ -9,14 +9,13 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by germangirod on 10/29/15.
  */
 public abstract class MapBaseFragment extends Fragment
-        implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        com.google.android.gms.location.LocationListener , GoogleMap.OnMapLoadedCallback{
+        implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+        com.google.android.gms.location.LocationListener, GoogleMap.OnMapLoadedCallback, GoogleMap.OnMapClickListener {
 
     public GoogleApiClient googleApiClient;
     public LocationRequest locationRequest;
@@ -36,7 +35,6 @@ public abstract class MapBaseFragment extends Fragment
         locationRequest.setInterval(1000);
 
         LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
-
     }
 
     @Override public void onConnectionSuspended(int i) {
@@ -51,18 +49,9 @@ public abstract class MapBaseFragment extends Fragment
 
     }
 
-    @Override public void onMapLongClick(LatLng latLng) {
-
-    }
-
-    @Override public void onMapReady(GoogleMap googleMap) {
-
-    }
-
     @Override public void onStart() {
         super.onStart();
         googleApiClient.connect();
-
     }
 
     @Override public void onStop() {
