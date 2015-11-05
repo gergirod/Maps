@@ -146,22 +146,27 @@ public class MapFragment extends MapBaseFragment implements ResultCallback<Statu
         if (markers.size() == 0) {
             MarkerOptions markerOptions = new MarkerOptions().title("place").position(latLng).icon(BitmapDescriptorFactory.defaultMarker());
             markers.add(map.addMarker(markerOptions));
-            AlarmPlace alarmPlace = new AlarmPlace();
-            alarmPlace.latitude = latLng.latitude;
-            alarmPlace.longitude = latLng.longitude;
-            alarmPlace.name = "German Geofence Number One";
-            alarmPlace.radius = 100;
 
-            addFence(alarmPlace);
-            drawCircleRadius(alarmPlace);
-            addGeofencesButtonHandler();
+            AlarmPlace alarmPlace = new AlarmPlace(latLng.latitude, latLng.longitude, 100, "German Girod");
+
+            addGeofence(alarmPlace);
         } else {
-            Marker marker = markers.get(0);
-            marker.remove();
-            markers.clear();
-            removeGeofencesButtonHandler();
-            circle.remove();
+            removeGeofence();
         }
+    }
+
+    private void addGeofence(AlarmPlace alarmPlace) {
+        addFence(alarmPlace);
+        drawCircleRadius(alarmPlace);
+        addGeofencesButtonHandler();
+    }
+
+    private void removeGeofence() {
+        Marker marker = markers.get(0);
+        marker.remove();
+        markers.clear();
+        removeGeofencesButtonHandler();
+        circle.remove();
     }
 
     private void addFence(AlarmPlace place) {

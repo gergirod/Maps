@@ -10,6 +10,13 @@ public class AlarmPlace {
     public double radius;
     public String name;
 
+    public AlarmPlace(double latitude, double longitude, double radius, String name) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.radius = radius;
+        this.name = name;
+    }
+
     public double getLatitude() {
         return latitude;
     }
