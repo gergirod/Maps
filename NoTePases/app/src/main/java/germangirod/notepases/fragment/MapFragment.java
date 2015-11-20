@@ -124,6 +124,8 @@ public class MapFragment extends MapBaseFragment implements ResultCallback<Statu
         Intent intent = new Intent(getActivity(), GeofenseTransitionsIntentService.class);
         // We use FLAG_UPDATE_CURRENT so that we get the same pending intent back when calling
         // addGeofences() and removeGeofences().
+        Intent mIntent = new Intent( intent );
+        getActivity().startService( mIntent );
         return PendingIntent.getService(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 

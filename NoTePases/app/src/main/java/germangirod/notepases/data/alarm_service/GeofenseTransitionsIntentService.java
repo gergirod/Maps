@@ -65,6 +65,7 @@ public class GeofenseTransitionsIntentService extends IntentService {
 
             // Send notification and log the transition details.
             sendNotification(geofenceTransitionDetails);
+
             Log.i(TAG, geofenceTransitionDetails);
         } else {
             // Log the error.
@@ -91,7 +92,7 @@ public class GeofenseTransitionsIntentService extends IntentService {
         }
         String triggeringGeofencesIdsString = TextUtils.join(", ", triggeringGeofencesIdsList);
 
-        return geofenceTransitionString + ": " + triggeringGeofencesIdsString;
+        return geofenceTransitionString + ": " + 2;
     }
 
     /**
